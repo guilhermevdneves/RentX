@@ -1,4 +1,5 @@
 import styled from 'styled-components/native';
+import { FlatList, View } from 'react-native';
 import Logo from '../../assets/logo.svg';
 import { RFValue } from 'react-native-responsive-fontsize';
 
@@ -37,8 +38,8 @@ export const CarsCount = styled.Text`
 `;
 
 
-export const ScrollCar = styled.View`
-  margin: 0 16px;
-
-
+export const CarList = styled(FlatList).attrs({
+  showVerticalScrollIndicatior: false
+})`
+  margin-top: 16px;
 `;

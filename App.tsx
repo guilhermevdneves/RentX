@@ -1,4 +1,5 @@
 import React from 'react';
+import 'react-native-gesture-handler';
 import Home from './src/screens/Home';
 import { ThemeProvider } from 'styled-components'
 import {
@@ -7,6 +8,7 @@ import {
 import { Inter_400Regular, Inter_500Medium } from '@expo-google-fonts/inter'
 import AppLoading from 'expo-app-loading';
 import theme from './src/styles/theme';
+import Schedule from './src/screens/Schedule';
 
 
 export default function App() {
@@ -24,7 +26,7 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Home />
+      <Schedule />
     </ThemeProvider>
   );
 }

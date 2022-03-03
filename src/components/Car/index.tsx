@@ -12,7 +12,7 @@ import {
   CarImage
 } from './styles';
 
-interface Props {
+export interface CarProps {
   brand: string;
   model: string;
   rent: {
