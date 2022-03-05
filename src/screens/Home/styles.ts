@@ -1,5 +1,5 @@
 import styled from 'styled-components/native';
-import { FlatList, View } from 'react-native';
+import { FlatList } from 'react-native';
 import Logo from '../../assets/logo.svg';
 import { RFValue } from 'react-native-responsive-fontsize';
 

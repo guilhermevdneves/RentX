@@ -24,7 +24,7 @@ export interface CarProps {
 
 
 
-function Car({ brand, model, thumbnail, rent: { period, price } }: Props) {
+function Car({ brand, model, thumbnail, rent: { period, price } }: CarProps) {
   return (
     <Container>
       <CarInfo>

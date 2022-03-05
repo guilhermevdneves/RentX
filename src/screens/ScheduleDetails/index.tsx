@@ -1,15 +1,16 @@
 import React from 'react';
+import { useTheme } from 'styled-components';
+
 import BackButton from '../../components/BackButton';
 import ImageSlider from '../../components/ImageSlider';
 import Acessory from '../../components/Acessory';
-
+import Button from '../../components/Button';
 import exchange from '../../assets/exchange.svg';
 import speed from '../../assets/speed.svg';
 import acceleration from '../../assets/acceleration.svg';
 import force from '../../assets/force.svg';
 import gasoline from '../../assets/gasoline.svg';
 import people from '../../assets/people.svg';
-
 import {
   Container,
   Header,
@@ -22,13 +23,25 @@ import {
   Brand,
   Model,
   Price,
-  About,
   AcessoriesList,
-  Footer
+  Footer,
+  Icon,
+  CalendarIcon,
+  DateInfo,
+  DateTitle,
+  DateValue,
+  RightArrow,
+  RentalPeriod,
+  RentalPrice,
+  RentaPriceLabel,
+  RentaPriceDetails,
+  RentaPriceQuote,
+  RentaPriceTotal
 } from './styles';
-import Button from '../../components/Button';
 
-function CarDetails(props) {
+
+function ScheduleDetails(props) {
+  const theme = useTheme();
   return (
     <Container>
       <Header>
@@ -61,19 +74,43 @@ function CarDetails(props) {
           <Acessory name="2 pessoas" icon={people} />
         </AcessoriesList>
 
-        <About>
-          Este é automóvel desportivo.
-          Surgiu do lendário touro de lide indultado na praça Real Maestranza de Sevilla.
-          É um belíssimo carro para quem gosta de acelerar.
-        </About>
 
+        <RentalPeriod>
+          <CalendarIcon>
+            <Icon />
+          </CalendarIcon>
+
+          <DateInfo>
+            <DateTitle>De</DateTitle>
+            <DateValue>18/06/2021</DateValue>
+          </DateInfo>
+
+          <RightArrow />
+
+          <DateInfo>
+            <DateTitle>Até</DateTitle>
+            <DateValue>20/06/2021</DateValue>
+          </DateInfo>
+        </RentalPeriod>
+
+        <RentalPrice>
+          <RentaPriceLabel>Total</RentaPriceLabel>
+          <RentaPriceDetails>
+            <RentaPriceQuote>R$ 580 x3 diárias</RentaPriceQuote>
+            <RentaPriceTotal>R$ 2.900 </RentaPriceTotal>
+          </RentaPriceDetails>
+        </RentalPrice>
       </Content>
 
       <Footer>
-        <Button>Escolher período do aluguel</Button>
+        <Button
+          textColor={theme.colors.background_secondary}
+          color={theme.colors.success}>
+          Alugar agora
+        </Button>
       </Footer>
     </Container>
   );
 }
 
-export default CarDetails;
+export default ScheduleDetails;
