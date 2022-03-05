@@ -16,34 +16,31 @@ export default function StackRoutes() {
       screenOptions={{ headerShown: false }}
     >
       <Screen
-        name="a"
+        name="Home"
         component={Home}
       />
 
       <Screen
-        name="b"
+        name="CarDetails"
         component={CarDetails}
       />
 
       <Screen
-        name="c"
+        name="Schedule"
         component={Schedule}
       />
 
       <Screen
-        name="d"
+        name="ScheduleDetails"
         component={ScheduleDetails}
       />
 
       <Screen
-        name="e"
+        name="ScheduleComplete"
         component={ScheduleComplete}
       />
 
     </Navigator>
-
-
   )
-
 
 }
