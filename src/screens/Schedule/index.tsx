@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigation } from '@react-navigation/native';
 import BackButton from '../../components/BackButton';
 import { useTheme } from 'styled-components';
 import {
@@ -19,6 +20,7 @@ import Button from '../../components/Button';
 import Calendar from '../../components/Calendar';
 
 function Schedule(props) {
+  const { navigate, goBack } = useNavigation<any>()
   const theme = useTheme();
 
   return (
@@ -27,7 +29,7 @@ function Schedule(props) {
       <StatusBar />
 
       <Header>
-        <BackButton onPress={() => { }} color={theme.colors.shape} />
+        <BackButton onPress={() => goBack()} color={theme.colors.shape} />
 
         <Title>
           Escolha uma{'\n'}data de início e{'\n'}fim do aluguel
@@ -57,7 +59,7 @@ function Schedule(props) {
       </Content>
 
       <Footer>
-        <Button>Confirmar</Button>
+        <Button onPress={() => navigate('ScheduleDetails')}>Confirmar</Button>
       </Footer>
 
     </Container >

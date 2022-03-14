@@ -1,9 +1,10 @@
 import React from 'react';
+import { RectButtonProps } from 'react-native-gesture-handler';
 import { Container, Title } from './styles';
 
-function ConfirmButton(props) {
+function ConfirmButton({ ...props }: RectButtonProps) {
   return (
-    <Container>
+    <Container {...props}>
       <Title>Ok</Title>
     </Container>
   );

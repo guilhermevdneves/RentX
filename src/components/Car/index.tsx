@@ -1,4 +1,6 @@
 import React from 'react';
+import { RectButtonProps } from 'react-native-gesture-handler';
+import { useNavigation } from '@react-navigation/native';
 import {
   Container,
   CarInfo,
@@ -12,7 +14,7 @@ import {
   CarImage
 } from './styles';
 
-export interface CarProps {
+export interface CarProps extends RectButtonProps {
   brand: string;
   model: string;
   rent: {
@@ -24,9 +26,14 @@ export interface CarProps {
 
 
 
-function Car({ brand, model, thumbnail, rent: { period, price } }: CarProps) {
+function Car({ brand, model, thumbnail, rent: { period, price }, ...rest }: CarProps) {
+  const { navigate } = useNavigation<any>()
+
   return (
-    <Container>
+    <Container
+      onPress={() => navigate("CarDetails")}
+
+    >
       <CarInfo>
         <Brand>{brand}</Brand>
         <Model>{model}</Model>
@@ -41,7 +48,7 @@ function Car({ brand, model, thumbnail, rent: { period, price } }: CarProps) {
         </About>
       </CarInfo>
       <CarImage source={{ uri: thumbnail }} />
-    </Container>
+    </ Container>
   );
 }
 

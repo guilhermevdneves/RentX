@@ -1,4 +1,6 @@
 import React from 'react';
+import { useNavigation } from '@react-navigation/native';
+
 import BackButton from '../../components/BackButton';
 import ImageSlider from '../../components/ImageSlider';
 import Acessory from '../../components/Acessory';
@@ -29,10 +31,12 @@ import {
 import Button from '../../components/Button';
 
 function CarDetails(props) {
+  const { navigate, goBack } = useNavigation<any>()
+
   return (
     <Container>
       <Header>
-        <BackButton onPress={() => { }} />
+        <BackButton onPress={() => goBack()} />
       </Header>
 
       <CarImages>
@@ -70,7 +74,7 @@ function CarDetails(props) {
       </Content>
 
       <Footer>
-        <Button>Escolher período do aluguel</Button>
+        <Button onPress={() => navigate('Schedule')}>Escolher período do aluguel</Button>
       </Footer>
     </Container>
   );

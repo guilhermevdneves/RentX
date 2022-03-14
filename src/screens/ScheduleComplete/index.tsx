@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigation } from '@react-navigation/native';
 import ConfirmButton from '../../components/ConfirmButton';
 import {
   Container,
@@ -13,6 +14,7 @@ import {
 
 
 function ScheduleComplete(props) {
+  const { navigate } = useNavigation()
   return (
     <Container>
       <StatusBar />
@@ -29,7 +31,7 @@ function ScheduleComplete(props) {
       </Content>
 
       <Footer>
-        <ConfirmButton />
+        <ConfirmButton onPress={() => navigate('Home')} />
       </Footer>
     </Container>
   );

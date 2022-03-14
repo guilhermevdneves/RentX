@@ -1,5 +1,7 @@
 import React from 'react';
 import { useTheme } from 'styled-components';
+import { useNavigation } from '@react-navigation/native';
+
 
 import BackButton from '../../components/BackButton';
 import ImageSlider from '../../components/ImageSlider';
@@ -41,11 +43,13 @@ import {
 
 
 function ScheduleDetails(props) {
+  const { navigate, goBack } = useNavigation<any>()
   const theme = useTheme();
+
   return (
     <Container>
       <Header>
-        <BackButton onPress={() => { }} />
+        <BackButton onPress={() => goBack()} />
       </Header>
 
       <CarImages>
@@ -104,8 +108,10 @@ function ScheduleDetails(props) {
 
       <Footer>
         <Button
+          onPress={() => navigate('ScheduleComplete')}
           textColor={theme.colors.background_secondary}
-          color={theme.colors.success}>
+          color={theme.colors.success}
+        >
           Alugar agora
         </Button>
       </Footer>

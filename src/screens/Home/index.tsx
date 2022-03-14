@@ -24,6 +24,7 @@ const data = [
 ];
 
 function Home() {
+
   return (
     <Container>
       <StatusBar />
@@ -45,6 +46,7 @@ function Home() {
         keyExtractor={(item: CarProps) => item.model}
         renderItem={({ item }: { item: CarProps }) => (
           <Car
+
             brand={item.brand}
             model={item.model}
             rent={item.rent}

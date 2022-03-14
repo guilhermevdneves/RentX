@@ -43,7 +43,8 @@ function Calendar(props) {
 
       }}
       firstDay={1}
-      minDate={new Date()}
+      minDate={new Date().toString()
+      }
     >
     </CustomCalendar >
   );
