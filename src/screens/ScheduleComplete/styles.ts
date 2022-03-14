@@ -13,7 +13,7 @@ export const Container = styled.View`
 export const LogoSvg = styled(Logo).attrs({
   width: Dimensions.get('window').width
 })`
-  margin-top: ${getStatusBarHeight() + 66}px;
+  margin-top: ${getStatusBarHeight() + 15}px;
 `
 
 export const DoneSvg = styled(Done).attrs({
@@ -37,7 +37,7 @@ export const Title = styled.Text`
   color: ${({ theme }) => theme.colors.shape};
   font-family: ${({ theme }) => theme.fonts.secondary_600};
   font-size: ${RFValue(30)}px;
-  margin-top: 30px;
+  margin-top: 20px;
   text-align: center;
 `
 

@@ -1,8 +1,6 @@
 import React from 'react';
 import { useTheme } from 'styled-components';
-import { useNavigation } from '@react-navigation/native';
-
-
+import { useNavigation, useRoute } from '@react-navigation/native';
 import BackButton from '../../components/BackButton';
 import ImageSlider from '../../components/ImageSlider';
 import Acessory from '../../components/Acessory';
@@ -13,6 +11,7 @@ import acceleration from '../../assets/acceleration.svg';
 import force from '../../assets/force.svg';
 import gasoline from '../../assets/gasoline.svg';
 import people from '../../assets/people.svg';
+import { CarDto } from '../../dtos/CarDto';
 import {
   Container,
   Header,
@@ -40,10 +39,26 @@ import {
   RentaPriceQuote,
   RentaPriceTotal
 } from './styles';
+import { getAccessoryIcon } from '../../utils/getAccessoryIcon';
+
+interface RentalPeriod {
+  start: number;
+  startFormatted: string;
+  end: number;
+  endFormatted: string;
+}
+
+interface Params {
+  params: {
+    car: CarDto;
+    date: RentalPeriod;
+  }
+}
 
 
 function ScheduleDetails(props) {
   const { navigate, goBack } = useNavigation<any>()
+  const { params: { car, date } } = useRoute() as Params;
   const theme = useTheme();
 
   return (
@@ -59,23 +74,22 @@ function ScheduleDetails(props) {
       <Content>
         <Details>
           <Description>
-            <Brand>Audi</Brand>
-            <Model>RS 5 Coupé</Model>
+            <Brand>{car.brand}</Brand>
+            <Model>{car.name}</Model>
           </Description>
 
           <Rent>
-            <Period> Ao dia</Period>
-            <Price>R$ 128</Price>
+            <Period>{car.rent.period}</Period>
+            <Price>R$ {car.rent.price}</Price>
           </Rent>
         </Details>
 
         <AcessoriesList>
-          <Acessory name="380km/h" icon={speed} />
-          <Acessory name="3.2s" icon={acceleration} />
-          <Acessory name="800 HP" icon={force} />
-          <Acessory name="Gasolina" icon={gasoline} />
-          <Acessory name="Auto" icon={exchange} />
-          <Acessory name="2 pessoas" icon={people} />
+          {
+            car.accessories.map(acessory => (
+              <Acessory name={acessory.name} key={acessory.type} icon={getAccessoryIcon(acessory.type)} />
+            ))
+          }
         </AcessoriesList>
 
 
@@ -86,14 +100,14 @@ function ScheduleDetails(props) {
 
           <DateInfo>
             <DateTitle>De</DateTitle>
-            <DateValue>18/06/2021</DateValue>
+            <DateValue>{date.startFormatted}</DateValue>
           </DateInfo>
 
           <RightArrow />
 
           <DateInfo>
             <DateTitle>Até</DateTitle>
-            <DateValue>20/06/2021</DateValue>
+            <DateValue>{date.endFormatted}</DateValue>
           </DateInfo>
         </RentalPeriod>
 

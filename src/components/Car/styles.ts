@@ -1,7 +1,6 @@
 import { RFValue } from 'react-native-responsive-fontsize';
 import styled from 'styled-components/native';
 import { RectButton } from 'react-native-gesture-handler';
-import GasolineSvg from '../../assets/gasoline.svg';
 
 export const Container = styled(RectButton)`
   align-items: center;
@@ -52,7 +51,6 @@ export const Price = styled.Text`
   font-family:${({ theme }) => theme.fonts.secondary_500};
 `;
 
-export const TypeOfFuel = styled(GasolineSvg)``;
 
 export const CarImage = styled.Image.attrs({
   resizeMode: 'contain'
